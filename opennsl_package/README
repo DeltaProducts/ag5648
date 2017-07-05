@@ -1,0 +1,40 @@
+This document describes how to install the OpenNSL software provided in
+this package on the Agema AG5648 switch.
+
+Pre-requisites:  The switch must have ONL(Open Network Linux) installed via ONIE.
+    Must log in as user root, password is onl
+    All commands run as root user.
+
+Downloading and running OpenNSL
+============================================================
+* download the OpenNSL_AG5648-3.3.0.2-1.deb package
+    root@localhost:~# tftp IPaddress
+    tftp> binary
+    tftp> get OpenNSL_AG5648-3.3.0.2-1.deb
+    tftp> quit
+   
+* Install the OpenNSL_AG5648-3.3.0.2-1.deb package
+    root@localhost:~# dpkg -i OpenNSL_AG5648-3.3.0.2-1.deb
+
+    Note:  It may be necessary to run the following command before installing
+           OpenNSL because sometimes the ONIE install leaves some packages
+           in a half-configured state:
+
+           dpkg --configure -a
+
+* Insert kernel modules, then the switch will be ready to run one of the examples. 
+    root@localhost:~# mknod /dev/linux-kernel-bde c 127 0
+    root@localhost:~# mknod /dev/linux-user-bde c 126 0
+    root@localhost:~# mknod /dev/linux-bcm-knet c 122 0
+    root@localhost:~# insmod linux-kernel-bde.ko
+    root@localhost:~# insmod linux-user-bde.ko
+    root@localhost:~# insmod linux-bcm-knet.ko use_rx_skb=1
+    root@localhost:~# ./example_drivshell
+
+
+* Breakout to 100G or 25 configuration
+    root@localhost:~# cd /etc/opennsl
+    root@localhost:~# cp -af opennsl_100G.cfg opennsl.cfg    //for breakout to 100G
+    root@localhost:~# cp -af opennsl_25G.cfg opennsl.cfg     //for breakout to 25G
+    root@localhost:~# cd - && ./example_drivshell
+
