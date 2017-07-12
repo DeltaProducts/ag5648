@@ -7,14 +7,14 @@ Pre-requisites:  The switch must have ONL(Open Network Linux) installed via ONIE
 
 Downloading and running OpenNSL
 ============================================================
-* download the OpenNSL_AG5648-3.3.0.2-1.deb package
+* download the OpenNSL_AG5648-3.3.0.2-2.deb package
     root@localhost:~# tftp IPaddress
     tftp> binary
-    tftp> get OpenNSL_AG5648-3.3.0.2-1.deb
+    tftp> get OpenNSL_AG5648-3.3.0.2-2.deb
     tftp> quit
    
-* Install the OpenNSL_AG5648-3.3.0.2-1.deb package
-    root@localhost:~# dpkg -i OpenNSL_AG5648-3.3.0.2-1.deb
+* Install the OpenNSL_AG5648-3.3.0.2-2.deb package
+    root@localhost:~# dpkg -i OpenNSL_AG5648-3.3.0.2-2.deb
 
     Note:  It may be necessary to run the following command before installing
            OpenNSL because sometimes the ONIE install leaves some packages
