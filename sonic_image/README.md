@@ -26,6 +26,8 @@
 
     4. reboot the devices
 
+    5. Type "bcmcmd ps" in command lind and you should see all the ports status
+
 
   You only  did those steps once.
 
